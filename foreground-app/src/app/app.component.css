@@ -1,0 +1,14 @@
+h1 {
+    background-color: aquamarine;
+    padding: 12px 20px;
+    margin: auto, 80px;
+}
+ul {
+    list-style: none;    
+}
+li {
+    padding: 3px;
+}
+li:nth-child(odd){
+    background-color: rgb(206, 255, 236);
+}
