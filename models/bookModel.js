@@ -12,8 +12,7 @@ var bookSchema = mongoose.Schema({
     },
     title: {type: String, required: true},
     isRead: Boolean,
-    yearRead: Number,
-    hasAttachement: Boolean
+    yearRead: Number
 });
 
 //create the data

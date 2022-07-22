@@ -13,8 +13,7 @@ module.exports = function(app) {
                     },
                     title: 'Babicka',
                     isRead: true,
-                    yearRead: 2020,
-                    hasAttachement: false 
+                    yearRead: 2020
                 },
                 {
                     author: {
@@ -23,8 +22,7 @@ module.exports = function(app) {
                     },
                     title: 'Kriz u potoka',
                     isRead: false,
-                    yearRead: 2020,
-                    hasAttachement: false
+                    yearRead: 2020
                 },
                 {
                     author: {
@@ -33,8 +31,7 @@ module.exports = function(app) {
                     },
                     title: 'Kafka na pobrezi',
                     isRead: true,
-                    yearRead: 2019,
-                    hasAttachement: false
+                    yearRead: 2019
                 }
             ];
             

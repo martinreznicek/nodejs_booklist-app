@@ -62,8 +62,7 @@ module.exports = function(app) {
             author: req.body.author,            
             title: req.body.title,
             isRead: req.body.isRead,
-            yearRead: req.body.yearRead,
-            hasAttachement: req.body.hasAttachement 
+            yearRead: req.body.yearRead
         });
         newBook.save(function(err) {
             if (err) throw err;
@@ -80,8 +79,7 @@ module.exports = function(app) {
             author: req.body.author,
             title: req.body.title,
             isRead: req.body.isRead,
-            yearRead: req.body.yearRead,
-            hasAttachement: req.body.hasAttachement
+            yearRead: req.body.yearRead
         }),
         function(err) {
             if (err) throw err;
