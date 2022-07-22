@@ -1,8 +1,3 @@
-h1 {
-    background-color: aquamarine;
-    padding: 12px 20px;
-    margin: auto, 80px;
-}
 mat-list-item:nth-child(odd){
     background-color: rgb(223, 255, 243);
 }
@@ -11,6 +6,14 @@ mat-list-item:nth-child(odd){
     min-width: 15%;
 }
 
-#name{
+#name { 
     min-width: 15%;
+}
+.bookButons {
+    position: absolute;
+    right: 1%;
+}
+.addButton {
+    margin: 0px 20px;
+    width: 10%;
 }

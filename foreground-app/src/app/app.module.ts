@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './views/form/form.component';
 import { ListComponent } from './views/list/list.component';
@@ -25,6 +26,7 @@ import { ListComponent } from './views/list/list.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatListModule,
+    MatButtonModule,
     ReactiveFormsModule
   ],
   providers: [],

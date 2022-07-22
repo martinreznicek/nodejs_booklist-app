@@ -1,0 +1,15 @@
+h1 {
+    background-color: aquamarine;
+    padding: 12px 20px;
+    margin: auto, 80px;
+}
+h2 {
+    padding: 5px 40px;
+    text-decoration: underline;
+}
+form {
+    padding: 5px 40px;
+}
+label{
+    font-weight: bold;
+}

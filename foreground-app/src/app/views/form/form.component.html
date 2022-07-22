@@ -1,21 +1,22 @@
-<h1>Add new book</h1>
+<h2>Add new book</h2>
 
 <form [formGroup]="bookForm" (ngSubmit)="onClickSubmit()">
     <label>Title</label><br>
-    <input type="text" formControlName="title" placeholder="title"><br/> <br/>  
-
+    <input type="text" formControlName="title" placeholder="title"><br/> <br/> 
+   
     <label>Author</label><br>
     <input type="text" formControlName="author_firstname" placeholder="author's surname"><br/>
-    <input type="text" formControlName="author_lastname" placeholder="author's surname"> <br/> <br/> 
+    <input class="inp" type="text" formControlName="author_lastname" placeholder="author's lastname"> <br/> <br/> 
     
+    <div id="readBook">
     <label>Already read the book</label>
     <input type="checkbox" formControlName="isRead"> <br/><br/>
+    </div>
     
     <div *ngIf="bookForm.controls.isRead.value">
     <label>Year of reading</label><br/>
     <input type="number" min="2000" [max]="thisYear" formControlName="yearRead" placeholder="2022"> <br/> <br/>
-    </div>
-    
+    </div>    
  
     <input type="submit" value="submit" [disabled]="title.invalid || author_firstname.invalid || author_lastname.invalid || isRead.invalid || yearRead.invalid"> 
 </form>
