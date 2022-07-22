@@ -24,7 +24,23 @@ export class ListComponent implements OnInit {
   }
   
   private async getBooks(): Promise<void> {
-    const books = await this.bookService.getBooks()
-    this.books = books;
+    try {
+      const books = await this.bookService.getBooks()
+      this.books = books;      
+    } catch (error) {
+      console.error(error);
+    }
+    
+  }
+
+  public async deleteBook(bookId: string): Promise<void> {
+    try {
+      await this.bookService.deleteBook(bookId);
+      this.books = this.books.filter(item => item._id !== bookId );    
+
+    } catch (error) {
+      console.error(error);
+    }   
+    
   }
 }

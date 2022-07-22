@@ -32,7 +32,12 @@ export class FormComponent implements OnInit {
   }
 
   public async postBook(newBook: Book): Promise<void> {
-    await this.bookService.postBook(newBook);
+    try {
+      await this.bookService.postBook(newBook);
+    } catch (error) {
+      console.error(error);
+    }
+    
   }
 
   private createBookForm() {
