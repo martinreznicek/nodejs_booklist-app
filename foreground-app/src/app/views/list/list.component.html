@@ -1,0 +1,11 @@
+<h1>Book list</h1>
+
+<button (click)="router.navigate(['form'])">Post Book</button>
+
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let book of books"> 
+      <span id="title"> {{ book.title }} </span>
+      <span id="name"> {{ book.author.lastname }} </span>
+      <span> {{ book.yearRead }} </span>
+     </mat-list-item>    
+  </mat-list>

@@ -1,0 +1,16 @@
+h1 {
+    background-color: aquamarine;
+    padding: 12px 20px;
+    margin: auto, 80px;
+}
+mat-list-item:nth-child(odd){
+    background-color: rgb(223, 255, 243);
+}
+#title {
+    font-weight: bold;
+    min-width: 15%;
+}
+
+#name{
+    min-width: 15%;
+}
