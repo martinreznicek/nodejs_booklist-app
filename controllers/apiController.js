@@ -67,7 +67,7 @@ module.exports = function(app) {
         newBook.save(function(err) {
             if (err) throw err;
 
-            res.send('Created')
+            res.send({message: 'Created'})
         });
     
     });
@@ -84,7 +84,7 @@ module.exports = function(app) {
         function(err) {
             if (err) throw err;
 
-            res.send('Updated');
+            res.send({message: 'Updated'});
         }
   
     });
@@ -94,7 +94,7 @@ module.exports = function(app) {
         Book.findByIdAndDelete( req.params.id, {useFindAndModify: false}, function(err){
             if (err) throw err;
 
-            res.send('Deleted');
+            res.send({message: 'Deleted'});
         })
 
     });
