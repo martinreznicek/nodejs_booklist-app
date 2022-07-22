@@ -56,43 +56,44 @@ module.exports = function(app) {
     });
 
     app.post('/api/book', function(req, res) {
+        
+        //create a new book     
+        var newBook = Book({    
+            author: req.body.author,            
+            title: req.body.title,
+            isRead: req.body.isRead,
+            yearRead: req.body.yearRead,
+            hasAttachement: req.body.hasAttachement 
+        });
+        newBook.save(function(err) {
+            if (err) throw err;
 
-        //update existing book
-        if (req.body.id) {
-            Book.findByIdAndUpdate(req.body.id, {
-                //author: req.body.author,
-                title: req.body.title,
-                isRead: req.body.isRead,
-                yearRead: req.body.yearRead,
-                hasAttachement: req.body.hasAttachement
-            }),
-            function(err) {
-                if (err) throw err;
-
-                res.send('Updated');
-            }
-        }
-
-        //create a new book
-        else {
-            var newBook = Book({    
-                author: req.body.author,            
-                title: req.body.title,
-                isRead: req.body.isRead,
-                yearRead: req.body.yearRead,
-                hasAttachement: req.body.hasAttachement 
-            });
-            newBook.save(function(err) {
-                if (err) throw err;
-
-                res.send('Created')
-            });
-        }
+            res.send('Created')
+        });
+    
     });
 
-    app.delete('/api/book', function(req, res) {
+    app.post('/api/book/:id', function(req, res) {
+        
+        //update existing book
+        Book.findByIdAndUpdate(req.params.id, {
+            author: req.body.author,
+            title: req.body.title,
+            isRead: req.body.isRead,
+            yearRead: req.body.yearRead,
+            hasAttachement: req.body.hasAttachement
+        }),
+        function(err) {
+            if (err) throw err;
 
-        Book.findByIdAndRemove(req.body.id, function(err){
+            res.send('Updated');
+        }
+  
+    });
+
+    app.delete('/api/book/:id', function(req, res) {
+
+        Book.findByIdAndDelete( req.params.id, {useFindAndModify: false}, function(err){
             if (err) throw err;
 
             res.send('Deleted');

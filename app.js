@@ -9,15 +9,6 @@ var port = process.env.PORT || 3000;
 
 app.use('/', express.static(__dirname + 'foreground-app'));
 
-
-
-
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//    next();
-//   });
-
 app.set('view engine', 'ejs');
 
 //connection to the DB
@@ -38,7 +29,5 @@ app.use(function (req, res, next) {
 //this will add the endpoint for the setupContoller and call the function(app)
 setupController(app);
 apiController(app);
-
-app
 
 app.listen(port);
