@@ -1,6 +1,10 @@
 <h1>Book list</h1>
-  <ul>
-    <li *ngFor="let book of books">
-      {{ book.title }}
-    </li>
-  </ul>
+
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let book of books"> 
+      <span id="title"> {{ book.title }} </span>
+      <span id="name"> {{ book.author.lastname }} </span>
+      <span> {{ book.yearRead }} </span>
+     </mat-list-item>
+    
+  </mat-list>

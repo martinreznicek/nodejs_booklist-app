@@ -3,12 +3,14 @@ h1 {
     padding: 12px 20px;
     margin: auto, 80px;
 }
-ul {
-    list-style: none;    
+mat-list-item:nth-child(odd){
+    background-color: rgb(223, 255, 243);
 }
-li {
-    padding: 3px;
+#title {
+    font-weight: bold;
+    min-width: 15%;
 }
-li:nth-child(odd){
-    background-color: rgb(206, 255, 236);
+
+#name{
+    min-width: 15%;
 }
