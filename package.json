@@ -1,6 +1,6 @@
 {
   "name": "node-book-app",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "The book list app",
   "main": "index.js",
   "scripts": {
