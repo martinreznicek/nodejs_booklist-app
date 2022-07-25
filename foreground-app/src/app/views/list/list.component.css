@@ -9,6 +9,9 @@ mat-list-item:nth-child(odd){
 #name { 
     min-width: 15%;
 }
+button {
+    margin: auto 3px
+}
 .bookButons {
     position: absolute;
     right: 1%;

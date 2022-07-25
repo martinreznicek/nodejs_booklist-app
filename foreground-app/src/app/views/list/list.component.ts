@@ -40,7 +40,11 @@ export class ListComponent implements OnInit {
 
     } catch (error) {
       console.error(error);
-    }   
-    
+    }
   }
+
+  public handleUpdate(bookId: string) {
+    this.router.navigate(['form/' + bookId]);
+  }
+
 }

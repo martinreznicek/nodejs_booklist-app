@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Book } from 'src/app/models/book';
@@ -18,8 +18,14 @@ export class FormComponent implements OnInit {
 
   isTheBookRead: boolean = false;
 
+  bookId: string;
+  update: boolean = false;
+  bookData: Book;
+
+  headline: string = "Add new book";
+
+  
   constructor(
-    private formBuilder: FormBuilder,
     private bookService: BookService,
     private router: Router
     ) {
@@ -27,17 +33,42 @@ export class FormComponent implements OnInit {
       this.createBookForm();
     }
 
-  ngOnInit(): void {
-
+  async ngOnInit(): Promise<void> {
+    this.bookId = this.router.url.split('/form/')[1];
+    if (this.bookId) {
+      this.update = true;
+      this.headline = 'Update book';
+      this.setValuesForUpdateBook();
+    }
+    console.log(this.bookId, this.update)
+    console.log(this.bookData);
+    
   }
 
-  public async postBook(newBook: Book): Promise<void> {
+  public async addNewBook(newBook: Book): Promise<void> {
     try {
       await this.bookService.postBook(newBook);
     } catch (error) {
       console.error(error);
     }
     
+  }
+
+  public async updateBook(newBook: Book): Promise<void> {
+    try {
+      await this.bookService.updateBook(newBook, this.bookId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  public async setValuesForUpdateBook() {
+    const bookData = await this.bookService.getBookById(this.bookId);
+    this.bookForm.get('title').setValue(bookData.title);
+    this.bookForm.get('author_firstname').setValue(bookData.author.firstname);
+    this.bookForm.get('author_lastname').setValue(bookData.author.lastname);
+    this.bookForm.get('isRead').setValue(bookData.isRead);
+    this.bookForm.get('yearRead').setValue(bookData.yearRead);
   }
 
   private createBookForm() {
@@ -47,8 +78,7 @@ export class FormComponent implements OnInit {
       title: new FormControl('', Validators.required),
       isRead: new FormControl(false, Validators.required),
       yearRead: new FormControl(undefined)
-    });
-  
+    });  
   }
   
   //FORM validators
@@ -71,8 +101,9 @@ export class FormComponent implements OnInit {
     if (bookToSend.isRead) {
       bookToSend.yearRead = this.bookForm.controls.yearRead.value;
     }
-    console.log(bookToSend);    
-    this.postBook(bookToSend);
+    console.log(bookToSend);
+    
+    this.update ? this.updateBook(bookToSend) : this.addNewBook(bookToSend);
     this.router.navigate(['list']);
   }
 

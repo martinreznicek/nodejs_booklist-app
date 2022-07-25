@@ -22,7 +22,15 @@ export class BookService {
       return this.http.post(this.booksApiUrl + 'book', book).toPromise();
     }
 
+    public async updateBook(book: Book, bookId: string): Promise<any> {
+      return this.http.post(this.booksApiUrl + 'book' + '/' + bookId, book).toPromise();
+    }
+
     public async deleteBook(bookId: string): Promise<any> {
       return this.http.delete(this.booksApiUrl + 'book' + '/' + bookId).toPromise();
+    }
+
+    public async getBookById(bookId: string): Promise<any> {
+      return this.http.get(this.booksApiUrl + 'book' + '/' + bookId).toPromise();
     }
 }

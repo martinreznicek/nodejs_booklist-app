@@ -7,6 +7,7 @@ import { ListComponent } from './views/list/list.component';
 const routes: Routes = [
   {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: 'form', component: FormComponent},
+  {path: 'form/:id', component: FormComponent},
   {path: 'list', component: ListComponent},
 ];
 
