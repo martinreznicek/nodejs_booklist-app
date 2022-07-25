@@ -7,6 +7,8 @@ import { Book } from '../models/book';
     providedIn: 'root'
   })
 export class BookService {
+
+    books: Book[];
     
     private booksApiUrl = 'http://localhost:3000/api/';
 

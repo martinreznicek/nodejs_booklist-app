@@ -1,9 +1,10 @@
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose');
-var config = require('./config');
+// var mongoose = require('mongoose');
+var mysql = require('./util/mysql-db');
+// var config = require('./config');
 var setupController = require('./controllers/setupController');
-var apiController = require('./controllers/apiController');
+var apiController = require('./controllers/apiSqlController');
 
 var port = process.env.PORT || 3000;
 
@@ -12,13 +13,13 @@ app.use('/', express.static(__dirname + 'foreground-app'));
 app.set('view engine', 'ejs');
 
 //connection to the DB
-mongoose.connect(config.getDbConnectionString(), { useNewUrlParser: true,  useUnifiedTopology: true })
-    .then(() => {
-        console.log('Connected to database');
-    })
-    .catch(() => {
-        console.log('Connection failed');
-    });
+// mongoose.connect(config.getDbConnectionString(), { useNewUrlParser: true,  useUnifiedTopology: true })
+//     .then(() => {
+//         console.log('Connected to database');
+//     })
+//     .catch(() => {
+//         console.log('Connection failed');
+//     });
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

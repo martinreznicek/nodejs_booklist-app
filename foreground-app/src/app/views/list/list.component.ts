@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
 
 
@@ -12,10 +10,8 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class ListComponent implements OnInit {
 
-  books: Book[];
-
   constructor(
-    private bookService: BookService,
+    public bookService: BookService,
     public router: Router
     ) { }
 
@@ -26,7 +22,7 @@ export class ListComponent implements OnInit {
   private async getBooks(): Promise<void> {
     try {
       const books = await this.bookService.getBooks()
-      this.books = books;      
+      this.bookService.books = books;      
     } catch (error) {
       console.error(error);
     }
@@ -36,7 +32,7 @@ export class ListComponent implements OnInit {
   public async deleteBook(bookId: string): Promise<void> {
     try {
       await this.bookService.deleteBook(bookId);
-      this.books = this.books.filter(item => item._id !== bookId );    
+      this.bookService.books = this.bookService.books.filter(item => item.id !== bookId );    
 
     } catch (error) {
       console.error(error);

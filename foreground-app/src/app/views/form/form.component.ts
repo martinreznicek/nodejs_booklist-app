@@ -73,6 +73,7 @@ export class FormComponent implements OnInit {
     }
     console.log(bookToSend);    
     this.postBook(bookToSend);
+    this.bookService.books.push(bookToSend);
     this.router.navigate(['list']);
   }
 
